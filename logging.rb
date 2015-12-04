@@ -1,13 +1,15 @@
+#Beispiel Aspect-Oriented Programming in Ruby anhand Logging-Aspekt.
+
 require 'aspector'
 
-# Example class to which we will apply our aspects
+#Beispiel-Klasse auf welche der Logging-Aspekt angewendet wird.
 class ExampleClass
   def test(input)
     input.upcase
   end
 end
 
-# Aspect used as a logging hookup
+#Der fürs Logging verwendete Aspekt.
 class LoggingAspect < Aspector::Base
   ALL_METHODS = /.*/
 
