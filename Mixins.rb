@@ -20,10 +20,12 @@ class Bus
   include Horn
 end
 
+puts
 car = Car.new
 car.start # => Brumm!
 car.horn  # => Möööp!
 
+puts
 bus = Bus.new
 bus.start # => Brumm!
 bus.horn  # => Möööp!
