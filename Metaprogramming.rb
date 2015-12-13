@@ -19,6 +19,24 @@ puts my_object.get_my_variable # => Hello
 
 
 class CarModel
+  # define a class macro for setting features
+  def self.features(*args)
+    args.each do |feature|
+      attr_accessor "#{feature}_price", "#{feature}_info"
+    end
+  end
+
+  # set _info and _price methods for each of these features
+  features :engine, :wheel, :airbag, :alarm, :stereo
+end
+
+car = CarModel.new
+car.engine_info = "Beziner"
+puts car.engine_info
+car.stereo_price = 1000
+puts car.stereo_price
+
+class CarModel3
   FEATURES = ["engine", "wheel", "airbag", "alarm", "stereo"]
 
   FEATURES.each do |feature|
@@ -40,59 +58,33 @@ class CarModel
   end
 end
 
-class CarModel2
-  attr_accessor :engine_info, :engine_price, :wheel_info, :wheel_price, :airbag_info, :airbag_price, :alarm_info, :alarm_price, :stereo_info, :stereo_price
-end
-
-class CarModel3
-  # define a class macro for setting features
-  def self.features(*args)
-    args.each do |feature|
-      attr_accessor "#{feature}_price", "#{feature}_info"
-    end
-  end
-
-  # set _info and _price methods for each of these features
-  features :engine, :wheel, :airbag, :alarm, :stereo
-end
-
-car = CarModel.new
-car.engine_info = "Beziner"
-puts car.engine_info
-car.stereo_price = 1000
-puts car.stereo_price
-
-car2 = CarModel2.new
-car2.engine_info = "Diesel"
-puts car2.engine_info
-car2.stereo_price = 800
-puts car2.stereo_price
-
+puts
 car3 = CarModel3.new
 car3.engine_info = "Beziner"
 puts car3.engine_info
 car3.stereo_price = 500
 puts car3.stereo_price
 
-class MyGhostClass
-  def method_missing(name, *args)
-    puts "#{name} was called with arguments: #{args.join(',')}"
-  end
-end
 
-m = MyGhostClass.new
-m.awesome_method("one", "two") # => awesome_method was called with arguments: one,two
-m.another_method("three", "four") # => another_method was called with arguments: three,four
-
-class Array
-  def foldl(method)
-    inject {|result, i| result ? result.send(method, i) : i }
-  end
-end
-
-puts [1000.0, 200.0, 50.0].foldl("/")
-
-
+puts
 # methoden abfragen alle ausgeben
+ class Airplane
+   def fly
+   end
 
+   def start
+   end
 
+   def land
+   end
+
+   def eject
+   end
+
+ end
+
+mets = Airplane.instance_methods
+puts "Methoden der Klasse " + Airplane.to_s
+mets.each do |met|
+  puts met.to_s
+end

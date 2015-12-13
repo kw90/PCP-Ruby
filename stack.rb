@@ -1,4 +1,5 @@
 # PCP C & Java Uebung Woche 1 Aufgabe 2
+
 class Stack
   def initialize
     @store = Array.new

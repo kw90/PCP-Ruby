@@ -1,4 +1,5 @@
 # PCP Scheme  Uebung Woche 6 Aufgabe 7
+
 class Lottonumbers
   def numbers (n)
     lottery_numbers = []
@@ -12,3 +13,4 @@ class Lottonumbers
 end
 
 puts Lottonumbers.new.numbers(6).join(" ")
+
